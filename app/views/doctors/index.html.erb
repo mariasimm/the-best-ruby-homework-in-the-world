@@ -1,0 +1,59 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Doctors</h1>
+
+<%= form_tag(doctors_path, method: :get) do %>
+  <%= label_tag(:name, "Name:") %>
+  <%= text_field_tag(:name) %>
+
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+
+  <%= label_tag(:phone, "Phone:") %>
+  <%= text_field_tag(:phone) %>
+
+  <%= label_tag(:department_id, "Department id:") %>
+  <%= text_field_tag(:department_id) %>
+
+  <%= label_tag(:speciality_id, "Speciality id:") %>
+  <%= text_field_tag(:speciality_id) %>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div id="doctors">
+  <%= link_to "New doctor", new_doctor_path %>
+  <table class="table table-striped table-hover">
+    <thead class ="thead-dark">
+    <tr>
+      <th>#   </th>
+      <th>Name   </th>
+      <th>Email   </th>
+      <th>Phone   </th>
+      <th>Department   </th>
+      <th>Speciality   </th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <% @doctors.each do |doctors| %>
+      <tr>
+        <td><%= doctors.id %></td>
+        <td><%= doctors.name %></td>
+        <td><%= doctors.email %></td>
+        <td><%= doctors.phone %></td>
+        <td><%= link_to doctors.department.name, department_path(doctors.department_id) %></td>
+        <td><%= link_to doctors.speciality.name, speciality_path(doctors.speciality_id) %></td>
+        <td><%= link_to "Show this doctor", doctors %></td>
+        <th cosplan="3"></th>
+      </tr>
+    <% end %>
+    </tbody>
+
+
+  </table>
+  <%= paginate @doctors %>
+</div>
+
+

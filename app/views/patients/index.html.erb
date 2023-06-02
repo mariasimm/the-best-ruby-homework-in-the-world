@@ -1,0 +1,44 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Patients</h1>
+
+<%= form_tag(patients_path, method: :get) do %>
+  <%= label_tag(:name, "Name:") %>
+  <%= text_field_tag(:name) %>
+
+  <%= label_tag(:card_id, "Card id:") %>
+  <%= text_field_tag(:card_id) %>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div id="patients">
+  <%= link_to "New patient", new_patient_path %>
+  <table class="table table-striped table-hover">
+    <thead class ="thead-dark">
+    <tr>
+      <th>#   </th>
+      <th>Name   </th>
+      <th>Id card   </th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= patient.id %></td>
+        <td><%= patient.name %></td>
+        <td><%= link_to patient.card_id, card_path(patient.card_id) %></td>
+        <td><%= link_to "Show this patient", patient %></td>
+        <th cosplan="3"></th>
+      </tr>
+    <% end %>
+    </tbody>
+
+
+  </table>
+  <%= paginate @patients %>
+</div>
+
+

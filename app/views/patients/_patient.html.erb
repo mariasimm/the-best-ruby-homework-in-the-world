@@ -1,0 +1,18 @@
+<div id="<%= dom_id patient %>">
+  <p>
+    <strong>Name:</strong>
+    <%= patient.name %>
+  </p>
+
+  <p>
+    <strong>Card:</strong>
+    <%= patient.card_id %>
+  </p>
+
+  <% if patient.avatar.attached? %>
+    <%= image_tag patient.avatar %>
+  <% else %>
+    <p>No avatar available.</p>
+  <% end %>
+
+</div>

@@ -1,0 +1,28 @@
+<div id="<%= dom_id hospital %>">
+  <p>
+    <strong>Name:</strong>
+    <%= hospital.name %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= hospital.address %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= hospital.phone %>
+  </p>
+
+  <p>
+    <strong>Street:</strong>
+    <%= hospital.street %>
+  </p>
+
+  <% if hospital.avatar.attached? %>
+    <%= image_tag hospital.avatar %>
+  <% else %>
+    <p>No avatar available.</p>
+  <% end %>
+
+</div>

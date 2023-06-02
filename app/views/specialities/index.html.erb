@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Specialities</h1>
+
+<%= form_tag(specialities_path, method: :get) do %>
+  <%= label_tag(:name, "Name:") %>
+  <%= text_field_tag(:name) %>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div id="specialities">
+  <%= link_to "New speciality", new_speciality_path %>
+  <table class="table table-striped table-hover">
+    <thead class ="thead-dark">
+
+    <tr>
+      <th>#</th>
+      <th>Name speciality</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <% @specialities.each do |speciality| %>
+      <tr>
+        <td><%= speciality.id %></td>
+        <td><%= speciality.name %></td>
+        <td><%= link_to "Show this speciality", speciality %></td>
+        <th cosplan="3"></th>
+      </tr>
+    <% end %>
+    </tbody>
+
+
+  </table>
+  <%= paginate @specialities %>
+</div>
+
+

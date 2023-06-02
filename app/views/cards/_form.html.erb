@@ -1,0 +1,32 @@
+<%= form_with(model: card) do |form| %>
+  <% if card.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+        <% card.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :street, style: "display: block" %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div>
+    <%= form.label :dateB, style: "display: block" %>
+    <%= form.text_field :dateB %>
+  </div>
+
+  <div>
+    <%= form.label :hospital_id, style: "display: block" %>
+    <%= form.text_field :hospital_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

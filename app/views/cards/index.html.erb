@@ -1,0 +1,47 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cards</h1>
+
+<%= form_tag(cards_path, method: :get) do %>
+  <%= label_tag(:street, "Street:") %>
+  <%= text_field_tag(:street) %>
+
+  <%= label_tag(:dateB, "DateB:") %>
+  <%= text_field_tag(:dateB) %>
+
+  <%= label_tag(:hospital_id, "Hospital id:") %>
+  <%= text_field_tag(:hospital_id) %>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+<div id="cards">
+  <%= link_to "New card", new_card_path %>
+  <table class="table table-striped table-hover">
+    <thead class ="thead-dark">
+    <tr>
+      <th>#   </th>
+      <th>Street   </th>
+      <th>Dateb   </th>
+      <th>Hospital   </th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.id %></td>
+        <td><%= card.street %></td>
+        <td><%= card.dateB %></td>
+        <td><%= link_to card.hospital.name, card_path(card.hospital_id) %></td>
+        <td><%= link_to "Show this card", card %></td>
+        <th cosplan="3"></th>
+      </tr>
+    <% end %>
+    </tbody>
+
+
+  </table>
+  <%= paginate @cards %>
+</div>
